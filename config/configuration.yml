@@ -43,7 +43,7 @@ access_control:
       policy: two_factor
     - domain: portainer.cloud-migrations.nl
       policy: two_factor
-    - domain: secure.example.com
+    - domain: guacamole.cloud-migrations.nl
       policy: two_factor
 
 session:
