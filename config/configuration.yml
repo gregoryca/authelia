@@ -40,11 +40,11 @@ access_control:
     - domain: import.cloud-migrations.nl
       policy: one_factor
     - domain: pihole.cloud-migrations.nl
-      policy: two_factor
+      policy: one_factor
     - domain: portainer.cloud-migrations.nl
-      policy: two_factor
+      policy: one_factor
     - domain: guacamole.cloud-migrations.nl
-      policy: two_factor
+      policy: one_factor
 
 session:
   name: authelia_session
