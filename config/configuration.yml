@@ -45,6 +45,16 @@ access_control:
       policy: one_factor
     - domain: guacamole.cloud-migrations.nl
       policy: one_factor
+    - domain: netdata.cloud-migrations.nl
+      policy: one_factor
+    - domain: uptime.cloud-migrations.nl
+      policy: one_factor
+    - domain: cloud.cloud-migrations.nl
+      policy: one_factor
+    - domain: phpmyadmin.cloud-migrations.nl
+      policy: one_factor
+    - domain: dashboard.cloud-migrations.nl
+      policy: one_factor
 
 session:
   name: authelia_session
