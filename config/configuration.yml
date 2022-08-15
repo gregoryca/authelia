@@ -49,7 +49,7 @@ access_control:
       policy: one_factor
     - domain: uptime.cloud-migrations.nl
       policy: one_factor
-    - domain: cloud.cloud-migrations.nl
+    - domain: matomo.cloud-migrations.nl
       policy: one_factor
     - domain: phpmyadmin.cloud-migrations.nl
       policy: one_factor
@@ -82,12 +82,12 @@ storage:
 
 notifier:
   smtp:
-    username: grcr@cloud-migrations.nl
+    username: 2fa@cloud-migrations.nl
     # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
     password: Laliloe4life#
     host: mail.mijndomein.nl
     port: 587
-    sender: grcr@cloud-migrations.nl
+    sender: 2fa@cloud-migrations.nl
   # filesystem:
   #   filename: /config/notification.txt
 ...
