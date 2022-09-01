@@ -52,9 +52,9 @@
   ###############################
   # Copy the static config file #
   ###############################
-  - name: copy static traefik config file to remote server
+  - name: copy static authelia config file to remote server
     copy:
-      src: /temp/traefik/config/configurations.yml
+      src: /temp/authelia/config/configurations.yml
       dest: /home/gregory/srv/authelia/config/configurations.yml
       remote_src: yes
     loop:
