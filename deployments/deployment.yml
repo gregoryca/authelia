@@ -54,7 +54,7 @@
   ###############################
   - name: copy the authelia config file to remote server
     copy:
-      src: /temp/authelia/config/configurations.yml
+      src: /temp/authelia/config/configuration.yml
       dest: /home/gregory/srv/authelia/config/configurations.yml
       remote_src: yes
     loop:
