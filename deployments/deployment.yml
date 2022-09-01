@@ -1,0 +1,90 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  #########################################
+  # Creating a temp directory on the host #
+  #########################################
+  - name: Create a temp directory if it does not exist
+    ansible.builtin.file:
+      path: /temp/authelia/
+      state: directory
+      mode: '0777'
+
+  ######################################
+  # Checkout Git Repo for latest code #
+  ######################################
+  - name: Checkout Git repo in temp directory
+    ansible.builtin.git:
+      repo: 'https://github.com/gregoryca/authelia.git'
+      dest: /temp/authelia/
+
+  ########################################
+  # Creating a srv directory on the host #
+  ########################################  
+  - name: Create the srv directory if it does not exist
+    ansible.builtin.file:
+      path: /home/gregory/srv/authelia/
+      state: directory
+      mode: '0777'
+
+  ######################################################
+  # Creating a the configuration directory on the host #
+  ######################################################
+  - name: Create the configurations directory if it does not exist
+    ansible.builtin.file:
+      path: /home/gregory/srv/authelia/config/
+      state: directory
+      mode: '0777'
+
+  #########################
+  # Copy the compose file #
+  #########################
+  - name: copy Docker Compose files to remote server
+    copy:
+      src: /temp/traefik/docker-compose.yml
+      dest: /home/gregory/srv/authelia/
+      remote_src: yes
+    loop:
+    - docker-compose.yml
+
+  ###############################
+  # Copy the static config file #
+  ###############################
+  - name: copy static traefik config file to remote server
+    copy:
+      src: /temp/traefik/config/configurations.yml
+      dest: /home/gregory/srv/authelia/config/configurations.yml
+      remote_src: yes
+    loop:
+    - configurations.yml
+
+  ################################
+  # Copy the dynamic config file #
+  ################################
+  - name: copy dynamic traefik config file to remote server
+    copy:
+      src: /temp/authelia/config/users_database.yml
+      dest: /home/gregory/srv/authelia/config/users_database.yml
+      remote_src: yes
+    loop:
+    - users_database.yml
+
+  #######################
+  # Deploy compose file #
+  #######################
+  - name: deploy Docker Compose stack on remote server
+    docker_compose:
+      project_src: /home/gregory/srv/authelia/
+      files:
+      - docker-compose.yml
+      recreate: always
+
+  #########################################
+  # Clean up temp folder after deployment #
+  #########################################
+  - name: Delete content & directory
+    file:
+      state: absent
+      path: /temp/
