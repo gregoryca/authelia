@@ -43,7 +43,7 @@
   #########################
   - name: copy Docker Compose files to remote server
     copy:
-      src: /temp/traefik/docker-compose.yml
+      src: /temp/authelia/docker-compose.yml
       dest: /home/gregory/srv/authelia/
       remote_src: yes
     loop:
@@ -52,7 +52,7 @@
   ###############################
   # Copy the static config file #
   ###############################
-  - name: copy static authelia config file to remote server
+  - name: copy the authelia config file to remote server
     copy:
       src: /temp/authelia/config/configurations.yml
       dest: /home/gregory/srv/authelia/config/configurations.yml
@@ -63,7 +63,7 @@
   ################################
   # Copy the dynamic config file #
   ################################
-  - name: copy dynamic traefik config file to remote server
+  - name: copy users_databse file to remote server
     copy:
       src: /temp/authelia/config/users_database.yml
       dest: /home/gregory/srv/authelia/config/users_database.yml
