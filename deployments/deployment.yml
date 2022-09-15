@@ -3,6 +3,20 @@
   become: true
   tasks:
 
+  ###############################
+  # Creating docker network web #
+  ###############################
+  - name: Create web network
+    docker_network:
+      name: web
+
+  ######################################
+  # Creating docker network web-secure #
+  ######################################
+  - name: Create web-secure network
+    docker_network:
+      name: web-secure
+
   #########################################
   # Creating a temp directory on the host #
   #########################################
