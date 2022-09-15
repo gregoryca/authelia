@@ -5,7 +5,7 @@ name: Deploy Authelia infra
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "dev", "development" ]
   pull_request:
     branches: [ "master" ]
 
