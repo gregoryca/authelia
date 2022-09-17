@@ -61,6 +61,8 @@ access_control:
       policy: one_factor
     - domain: elasticsearch.cloud-migrations.nl
       policy: one_factor
+    - domain: azure_traefik.cloud-migrations.nl
+      policy: one_factor
 
 session:
   name: authelia_session
