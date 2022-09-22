@@ -1,6 +1,8 @@
 ---
 - hosts: all
-  become: true
+  become: yes
+  become_user: gregory
+  gather_facts: True
   tasks:
 
   #########################################
@@ -8,17 +10,17 @@
   #########################################
   - name: Create a temp directory if it does not exist
     ansible.builtin.file:
-      path: /temp/authelia/
+      path: ~/temp/authelia/
       state: directory
       mode: '0777'
 
-  ######################################
-  # Checkout Git Repo for latest code #
-  ######################################
+  ##########################
+  # Checkout Authelia Repo #
+  ##########################
   - name: Checkout the Authelia git repo
     ansible.builtin.git:
       repo: 'https://github.com/gregoryca/authelia.git'
-      dest: /temp/authelia/
+      dest: ~/temp/authelia/
 
   ########################################
   # Creating a srv directory on the host #
@@ -34,7 +36,7 @@
   #########################
   - name: copy git repo to remote server
     copy:
-      src: /temp/authelia
+      src: ~/temp/authelia
       dest: ~/srv/
       remote_src: yes
 
@@ -43,7 +45,7 @@
   #######################
   - name: deploy Docker Compose stack on remote server
     docker_compose:
-      project_src: /home/gregory/srv/authelia/
+      project_src: ~/srv/authelia/
       files:
       - docker-compose.yml
       recreate: always
@@ -54,4 +56,10 @@
   - name: Delete content & directory
     file:
       state: absent
-      path: /temp/
+      path: ~/temp/
+
+  ############################################
+  # Post result on CMD line after deployment #
+  ############################################
+  - debug:
+      var: ansible_facts["cmdline"]
