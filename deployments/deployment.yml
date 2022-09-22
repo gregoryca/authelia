@@ -3,20 +3,6 @@
   become: true
   tasks:
 
-  ###############################
-  # Creating docker network web #
-  ###############################
-  - name: Create web network
-    docker_network:
-      name: web
-
-  ######################################
-  # Creating docker network web-secure #
-  ######################################
-  - name: Create web-secure network
-    docker_network:
-      name: web-secure
-
   #########################################
   # Creating a temp directory on the host #
   #########################################
@@ -29,7 +15,7 @@
   ######################################
   # Checkout Git Repo for latest code #
   ######################################
-  - name: Checkout Git repo in temp directory
+  - name: Checkout the Authelia git repo
     ansible.builtin.git:
       repo: 'https://github.com/gregoryca/authelia.git'
       dest: /temp/authelia/
@@ -39,51 +25,18 @@
   ########################################  
   - name: Create the srv directory if it does not exist
     ansible.builtin.file:
-      path: /home/gregory/srv/authelia/
-      state: directory
-      mode: '0777'
-
-  ######################################################
-  # Creating a the configuration directory on the host #
-  ######################################################
-  - name: Create the configurations directory if it does not exist
-    ansible.builtin.file:
-      path: /home/gregory/srv/authelia/config/
+      path: ~/srv/
       state: directory
       mode: '0777'
 
   #########################
   # Copy the compose file #
   #########################
-  - name: copy Docker Compose files to remote server
+  - name: copy git repo to remote server
     copy:
-      src: /temp/authelia/docker-compose.yml
-      dest: /home/gregory/srv/authelia/
+      src: /temp/authelia
+      dest: ~/srv/
       remote_src: yes
-    loop:
-    - docker-compose.yml
-
-  ###############################
-  # Copy the static config file #
-  ###############################
-  - name: copy the authelia config file to remote server
-    copy:
-      src: /temp/authelia/config/configuration.yml
-      dest: /home/gregory/srv/authelia/config/configuration.yml
-      remote_src: yes
-    loop:
-    - configurations.yml
-
-  ################################
-  # Copy the dynamic config file #
-  ################################
-  - name: copy users_databse file to remote server
-    copy:
-      src: /temp/authelia/config/users_database.yml
-      dest: /home/gregory/srv/authelia/config/users_database.yml
-      remote_src: yes
-    loop:
-    - users_database.yml
 
   #######################
   # Deploy compose file #
