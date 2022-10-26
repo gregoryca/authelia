@@ -10,7 +10,7 @@ services:
       - web-secure
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.authelia-secure.rule=Host(`auth.cloud-migrations.nl`)'
+      - 'traefik.http.routers.authelia-secure.rule=Host(`auth.apex-migrations.net`)'
       - 'traefik.http.routers.authelia-secure.entrypoints=web-secure'
       - 'traefik.http.routers.authelia-secure.tls=true'
       - 'traefik.http.routers.authelia-secure.tls.certresolver=production'
