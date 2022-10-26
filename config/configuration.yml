@@ -72,7 +72,7 @@ session:
   secret: unsecure_session_secret
   expiration: 3600  # 1 hour
   inactivity: 1800  # 30 minutes. 5 minutes = 300
-  domain: cloud-migrations.nl  # Should match whatever your root protected domain is
+  domain: apex-migrations.net  # Should match whatever your root protected domain is
 
   # redis:
   #   host: redis
@@ -91,13 +91,13 @@ storage:
     path: /config/db.sqlite3
 
 notifier:
-  smtp:
-    username: 2fa@cloud-migrations.nl
-    # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
-    password: Laliloe4life#
-    host: mail.mijndomein.nl
-    port: 587
-    sender: 2fa@cloud-migrations.nl
-  # filesystem:
-  #   filename: /config/notification.txt
+  # smtp:
+  #   username: 2fa@cloud-migrations.nl
+  #   # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+  #   password: Laliloe4life#
+  #   host: mail.mijndomein.nl
+  #   port: 587
+  #   sender: 2fa@cloud-migrations.nl
+  filesystem:
+    filename: /config/notification.txt
 ...
