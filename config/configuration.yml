@@ -33,37 +33,37 @@ access_control:
     # Rules applied to everyone
     - domain: public.example.com
       policy: bypass
-    - domain: opencartdev.cloud-migrations.nl
+    - domain: opencartdev.apex-migrations.net
       policy: one_factor
-    - domain: traefik.cloud-migrations.nl
+    - domain: traefik.apex-migrations.net
       policy: one_factor
-    - domain: import.cloud-migrations.nl
+    - domain: import.apex-migrations.net
       policy: one_factor
-    - domain: pihole.cloud-migrations.nl
+    - domain: pihole.apex-migrations.net
       policy: one_factor
-    - domain: portainer.cloud-migrations.nl
+    - domain: portainer.apex-migrations.net
       policy: one_factor
-    - domain: guacamole.cloud-migrations.nl
+    - domain: guacamole.apex-migrations.net
       policy: one_factor
-    - domain: netdata.cloud-migrations.nl
+    - domain: netdata.apex-migrations.net
       policy: one_factor
-    - domain: uptime.cloud-migrations.nl
+    - domain: uptime.apex-migrations.net
       policy: one_factor
-    - domain: matomo.cloud-migrations.nl
+    - domain: matomo.apex-migrations.net
       policy: one_factor
-    - domain: phpmyadmin.cloud-migrations.nl
+    - domain: phpmyadmin.apex-migrations.net
       policy: one_factor
-    - domain: dashboard.cloud-migrations.nl
+    - domain: dashboard.apex-migrations.net
       policy: one_factor
-    - domain: grafana.cloud-migrations.nl
+    - domain: grafana.apex-migrations.net
       policy: one_factor
-    - domain: kibana.cloud-migrations.nl
+    - domain: kibana.apex-migrations.net
       policy: one_factor
-    - domain: elasticsearch.cloud-migrations.nl
+    - domain: elasticsearch.apex-migrations.net
       policy: one_factor
-    - domain: azure_traefik.cloud-migrations.nl
+    - domain: azure_traefik.apex-migrations.net
       policy: one_factor
-    - domain: graylog.cloud-migrations.nl
+    - domain: graylog.apex-migrations.net
       policy: one_factor
 
 session:
