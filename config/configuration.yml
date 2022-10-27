@@ -63,7 +63,7 @@ access_control:
       policy: one_factor
     - domain: azure_traefik.apex-migrations.net
       policy: one_factor
-    - domain: graylog.apex-migrations.net
+    - domain: ansible.apex-migrations.net
       policy: one_factor
 
 session:
