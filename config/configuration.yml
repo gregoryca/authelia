@@ -4,7 +4,7 @@
 ###############################################################
 
 jwt_secret: a_very_important_secret
-default_redirection_url: https://auth.cloud-migrations.nl
+default_redirection_url: https://auth.apex-migrations.net
 
 server:
   host: 0.0.0.0
@@ -64,6 +64,12 @@ access_control:
     - domain: azure_traefik.apex-migrations.net
       policy: one_factor
     - domain: ansible.apex-migrations.net
+      policy: one_factor
+    - domain: dashboard.local
+      policy: one_factor
+    - domain: traefik.local
+      policy: one_factor
+    - domain: nextcloud.local
       policy: one_factor
 
 session:
