@@ -20,8 +20,6 @@ services:
       - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'  # yamllint disable-line rule:line-length
       
       - "traefik.http.services.authelia-secure.loadbalancer.server.port=9091" #port to the webservice
-    expose:
-      - 9091
     restart: unless-stopped
     healthcheck:
       disable: true

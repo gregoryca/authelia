@@ -65,11 +65,7 @@ access_control:
       policy: one_factor
     - domain: ansible.apex-migrations.net
       policy: one_factor
-    - domain: dashboard.local
-      policy: one_factor
-    - domain: traefik.local
-      policy: one_factor
-    - domain: nextcloud.local
+
       policy: one_factor
 
 session:
