@@ -66,8 +66,6 @@ access_control:
     - domain: ansible.apex-migrations.net
       policy: one_factor
 
-      policy: one_factor
-
 session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE

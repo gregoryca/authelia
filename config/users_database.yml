@@ -15,4 +15,13 @@ users:
     groups:
       - admins
       - dev
+
+  a-grcr:
+    displayname: "Gregory Craane"
+    # Password is authelia
+    password: "$argon2id$v=19$m=65536,t=3,p=4$cVNoZk0wbmR1L1UwdVBSdg$nOJPlHuA+c3obvLocaMxTVjz9PUYpDuhEPDJS10d/88"  # yamllint disable-line rule:line-length
+    email: gregory.craane@referit.nl
+    groups:
+      - admins
+      - dev
 ...
