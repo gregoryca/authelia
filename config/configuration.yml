@@ -70,8 +70,10 @@ session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
   secret: unsecure_session_secret
-  expiration: 3600  # 1 hour
-  inactivity: 1800  # 30 minutes. 5 minutes = 300
+  # expiration: 1h  # 1 hour
+  same_site : lax
+  inactivity: 5m  # 30 minutes. 5 minutes = 300
+  remember_me_duration:  15M
   domain: apex-migrations.net  # Should match whatever your root protected domain is
 
   # redis:
