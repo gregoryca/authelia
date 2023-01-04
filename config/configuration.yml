@@ -93,13 +93,13 @@ storage:
     path: /config/db.sqlite3
 
 notifier:
-  # smtp:
-  #   username: 2fa@cloud-migrations.nl
-  #   # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
-  #   password: Laliloe4life#
-  #   host: mail.mijndomein.nl
-  #   port: 587
-  #   sender: 2fa@cloud-migrations.nl
-  filesystem:
-    filename: /config/notification.txt
+  smtp:
+    username: 2fa@apex-migrations.net
+    # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+    password: Laliloe4life#
+    host: smtp.transip.email
+    port: 465
+    sender: 2fa@apex-migrations.net
+  # filesystem:
+  #   filename: /config/notification.txt
 ...

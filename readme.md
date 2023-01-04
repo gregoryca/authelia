@@ -1,0 +1,1 @@
+command to generate password: authelia hash-password --key-length=128 -- ''

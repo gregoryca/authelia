@@ -19,7 +19,7 @@ users:
   a-grcr:
     displayname: "Gregory Craane"
     # Password is authelia
-    password: "$argon2id$v=19$m=65536,t=3,p=4,k=64$SEg4NGZpeERTRHhzS0tOMg$uveGIzfm89CESHEwYqeWsIrJQ+rze1Rs0aRTPfgq6ZzD/y/2MAB4vX3BKzlMrWb4VRlaVo9a9CKFz4YIhd3tEQ"  # yamllint disable-line rule:line-length
+    password: "$argon2id$v=19$m=65536,t=3,p=4,k=128$OFlDa1BaNHNvQUJkeFNJcA$8ixaUVz5UP/tmSHTaHD6/niV7pUONaeiP2yV2zz5+hG5MXe0E/HuGgTmEvwrzV5/kxIr+vtJt2TcpzN7aJkLRJQTJlHKEND2RgeG9ZPQvk3QJJAye41iH5yyzO/Ufm+ua+Bb8wFEHDoHb+AlPDDkvQiVEd5we4AcYgLEghHvCbo"  # yamllint disable-line rule:line-length
     email: gregory.craane@referit.nl
     groups:
       - admins
