@@ -96,7 +96,7 @@ notifier:
   smtp:
     username: 2fa@apex-migrations.net
     # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
-    password: Laliloe4life#
+    password: Laliloe4life
     host: smtp.transip.email
     port: 465
     sender: 2fa@apex-migrations.net
