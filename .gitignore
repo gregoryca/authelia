@@ -1,2 +1,4 @@
 config/db.sqlite3
 config/notification.txt
+deployments/ansible.cfg
+deployments/inventory
