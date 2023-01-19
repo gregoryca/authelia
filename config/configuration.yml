@@ -72,8 +72,8 @@ session:
   secret: unsecure_session_secret
   # expiration: 1h  # 1 hour
   same_site : lax
-  inactivity: 5m  # 30 minutes. 5 minutes = 300
-  remember_me_duration:  15M
+  inactivity: 30m  # 30 minutes. 5 minutes = 300
+  remember_me_duration:  1w #1 week see: https://www.authelia.com/configuration/prologue/common/#duration-notation-format for notation
   domain: apex-migrations.net  # Should match whatever your root protected domain is
 
   # redis:
