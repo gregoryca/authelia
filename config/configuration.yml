@@ -65,6 +65,8 @@ access_control:
       policy: one_factor
     - domain: ansible.apex-migrations.net
       policy: one_factor
+    - domain: nextclouddb.gui.apex-migrations.net
+      policy: one_factor
 
 session:
   name: authelia_session
