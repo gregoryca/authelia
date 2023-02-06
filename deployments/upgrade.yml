@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become: yes
+  become_user: gregory
+  gather_facts: True
+  tasks:
+
+  #Stopping container
+    - name: Stop the docker container
+      docker_container:
+        name: authelia_2FA
+        state: stopped
+
+  #Removing/Deleting container
+    - name: Remove container
+      docker_container:
+        name: authelia_2FA
+        state: absent
+
+  #Removing/Deleting Image
+    - name: Remove image
+      docker_image:
+        name: authelia/authelia:latest
+        state: absent
+
+  #Pull latest version Image
+    - name: pull an image
+      docker_image:
+        name: authelia/authelia:latest
+        source: pull
+
+  #deploy compose file
+    - name: deploy Docker Compose stack
+      docker_compose:
+        project_src: ~/srv/authelia/
+        files:
+        - docker-compose.yml
+        recreate: always
