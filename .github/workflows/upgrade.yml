@@ -1,7 +1,7 @@
 ######################################################
 # This is a basic workflow to Deploy a traefik stack #
 ######################################################
-name: Deploy Authelia
+name: Upgrade Authelia
 
 on:
   push:
@@ -29,12 +29,12 @@ jobs:
       # Deploys an ansible script to manage the Authelia stack deployment #
       #####################################################################
       - uses: dawidd6/action-ansible-playbook@v2
-        name: Deploy Authelia 2FA
+        name: Upgrade Authelia 2FA
         with:
           ###############################
           # Required, playbook filepath #
           ###############################
-          playbook: deployment.yml
+          playbook: upgrade.yml
           ############################################
           # Optional, directory where playbooks live #
           ############################################
