@@ -67,6 +67,12 @@ access_control:
       policy: one_factor
     - domain: nextclouddb.gui.apex-migrations.net
       policy: one_factor
+    - domain: router.apex-migrations.net
+      policy: one_factor
+    - domain: prometheus.apex-migrations.net
+      policy: one_factor
+    - domain: cadvisor.apex-migrations.net
+      policy: one_factor
 
 session:
   name: authelia_session
