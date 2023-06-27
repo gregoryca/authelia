@@ -3,8 +3,7 @@
 #                   Authelia configuration                    #
 ###############################################################
 
-jwt_secret: SEEEEH_BO_sa_kaba-bai_den_konyo-bo_mama
-aaaa
+jwt_secret: SEEEEH_BO_sa_kaba-bai_den_konyo-bo_mamaaaaa
 default_redirection_url: https://auth.apex-migrations.net
 
 server:
@@ -75,7 +74,7 @@ session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
   secret: unsecure_session_secret
-  # expiration: 1h  # 1 hour
+  expiration: 1h  # 1 hour
   same_site : lax
   inactivity: 30m  # 30 minutes. 5 minutes = 300
   remember_me_duration:  1w #1 week see: https://www.authelia.com/configuration/prologue/common/#duration-notation-format for notation

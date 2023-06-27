@@ -15,17 +15,19 @@ services:
       - 'traefik.http.routers.authelia-secure.tls=true'
       - 'traefik.http.routers.authelia-secure.tls.certresolver=production'
 
-      - 'traefik.http.middlewares.authelia-secure.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net'  # yamllint disable-line rule:line-length
+      - 'traefik.http.middlewares.authelia-secure.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net' # yamllint disable-line rule:line-length
       - 'traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader=true'
-      - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'  # yamllint disable-line rule:line-length
-      
+      - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email' # yamllint disable-line rule:line-length
+      - "traefik.http.routers.authelia-secure.middlewares=real-ip-foo@file, IP2Location@file"
+
       - "traefik.http.services.authelia-secure.loadbalancer.server.port=9091" #port to the webservice
+
     restart: unless-stopped
     healthcheck:
       disable: true
     environment:
       - TZ=Europe/Amsterdam
 
-networks: 
+networks:
   web-secure:
     external: true
