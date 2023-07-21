@@ -69,6 +69,8 @@ access_control:
       policy: one_factor
     - domain: cadvisor.apex-migrations.net
       policy: one_factor
+    - domain: dozzle.apex-migrations.net
+      policy: one_factor
 
 session:
   name: authelia_session
