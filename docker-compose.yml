@@ -8,6 +8,8 @@ services:
       - ./config:/config
     networks:
       - web-secure
+    dns:
+      - 192.168.2.100
     labels:
       - 'traefik.enable=true'
 
