@@ -8,18 +8,16 @@
 # List of users
 users:
   gcraane:
-    displayname: "Gregory Aquiles Craane"
-    # Password is authelia
+    displayname: "Gregory Craane"
     password: "$argon2id$v=19$m=65536,t=3,p=4$WEkxNVI2QTVhcHdpWURsbA$7FePpdNYczbj6JRnQIJOpsU4Hu/46+WtFMpAWDnoqoY"  # yamllint disable-line rule:line-length
-    email: aquiles.craane@cloud-migrations.nl
+    email: aquiles.craane@apex-migrations.net
     groups:
       - admins
       - dev
 
   a-grcr:
-    displayname: "Gregory Craane"
-    # Password is authelia
-    password: "$argon2id$v=19$m=65536,t=3,p=4,k=128$OFlDa1BaNHNvQUJkeFNJcA$8ixaUVz5UP/tmSHTaHD6/niV7pUONaeiP2yV2zz5+hG5MXe0E/HuGgTmEvwrzV5/kxIr+vtJt2TcpzN7aJkLRJQTJlHKEND2RgeG9ZPQvk3QJJAye41iH5yyzO/Ufm+ua+Bb8wFEHDoHb+AlPDDkvQiVEd5we4AcYgLEghHvCbo"  # yamllint disable-line rule:line-length
+    displayname: "Gregory Craane | Referit"
+    password: "$argon2id$v=19$m=65536,t=3,p=4$nqnOBgrRRHtmEie0IyZUPQ$nQ1xHLQTdjgj3Vx9qyMjKTQwgvFGB/Nkdglx7qHzjGI"  # yamllint disable-line rule:line-length
     email: gregory.craane@referit.nl
     groups:
       - admins
