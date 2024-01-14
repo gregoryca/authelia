@@ -30,20 +30,15 @@ authentication_backend:
 access_control:
   default_policy: deny
   rules:
-    # Rules applied to everyone
-    - domain: public.example.com
-      policy: bypass
-    - domain: traefik.apex-migrations.net
+    - domain: traefik-dashboard.apex-migrations.net
       policy: one_factor
-    - domain: import.apex-migrations.net
+    - domain: traefik-dashboard1.apex-migrations.net
       policy: one_factor
     - domain: pihole.apex-migrations.net
       policy: one_factor
     - domain: portainer.apex-migrations.net
       policy: one_factor
     - domain: guacamole.apex-migrations.net
-      policy: one_factor
-    - domain: netdata.apex-migrations.net
       policy: one_factor
     - domain: uptime.apex-migrations.net
       policy: one_factor
@@ -55,21 +50,9 @@ access_control:
       policy: one_factor
     - domain: grafana.apex-migrations.net
       policy: one_factor
-    - domain: kibana.apex-migrations.net
-      policy: one_factor
-    - domain: elasticsearch.apex-migrations.net
-      policy: one_factor
-    - domain: ansible.apex-migrations.net
-      policy: one_factor
     - domain: nextclouddb.gui.apex-migrations.net
       policy: one_factor
     - domain: router.apex-migrations.net
-      policy: one_factor
-    - domain: prometheus.apex-migrations.net
-      policy: one_factor
-    - domain: cadvisor.apex-migrations.net
-      policy: one_factor
-    - domain: dozzle.apex-migrations.net
       policy: one_factor
 
 session:
