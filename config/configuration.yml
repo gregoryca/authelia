@@ -30,9 +30,9 @@ authentication_backend:
 access_control:
   default_policy: deny
   rules:
-    - domain: traefik-dashboard.apex-migrations.net
+    - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
-    - domain: traefik-dashboard1.apex-migrations.net
+    - domain: traefik-azure.apex-migrations.net # Traefik dashboard in Azure
       policy: one_factor
     - domain: pihole.apex-migrations.net
       policy: one_factor

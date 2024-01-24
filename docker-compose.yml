@@ -8,18 +8,15 @@ services:
       - ./config:/config
     networks:
       - web-secure
-    dns:
-      - 192.168.2.100
+    ports:
+      - 9091:9091
     labels:
       - 'traefik.enable=true'
 
-      - "traefik.http.routers.authelia-secure.rule=Host(`auth.apex-migrations.net`)"
       - 'traefik.http.middlewares.authelia-secure.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net' # yamllint disable-line rule:line-length
       - 'traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader=true'
       - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email' # yamllint disable-line rule:line-length
       - "traefik.http.routers.authelia-secure.middlewares=real-ip-foo@file"
-      - "traefik.http.services.authelia-secure.loadbalancer.server.port=9091" #port to the webservice
-
 
     restart: unless-stopped
     healthcheck:
