@@ -8,13 +8,13 @@
   #Stopping container
     - name: Stop the docker container
       docker_container:
-        name: authelia_2FA
+        name: authelia
         state: stopped
 
   #Removing/Deleting container
     - name: Remove container
       docker_container:
-        name: authelia_2FA
+        name: authelia
         state: absent
 
   #Removing/Deleting Image
