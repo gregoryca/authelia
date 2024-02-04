@@ -29,32 +29,83 @@ authentication_backend:
 
 access_control:
   default_policy: deny
+  networks:
+  - name: internal
+    networks:
+    - '192.168.2.100/16'
+  - name: external
+    networks:
+    - '143.178.33.85/16'
+    - '84.87.253.68/16'
+    - '84.241.199.78/16'
+    - '188.207.115.207/16'
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
+    - domain: home-assistant.apex-migrations.net
+      policy: bypass
+      networks:
+      - 'internal'
+      - 'external'
     - domain: traefik-azure.apex-migrations.net # Traefik dashboard in Azure
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: pihole.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: portainer.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: guacamole.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: uptime.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: matomo.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: phpmyadmin.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: dashboard.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: grafana.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: nextclouddb.gui.apex-migrations.net
       policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
     - domain: router.apex-migrations.net
       policy: one_factor
-
+      networks:
+      - 'internal'
+      - 'external'
+      
 session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
@@ -65,11 +116,11 @@ session:
   remember_me_duration:  1w #1 week see: https://www.authelia.com/configuration/prologue/common/#duration-notation-format for notation
   domain: apex-migrations.net  # Should match whatever your root protected domain is
 
-  # redis:
-  #   host: redis
-  #   port: 6379
-  #   # This secret can also be set using the env variables AUTHELIA_SESSION_REDIS_PASSWORD_FILE
-  #   # password: authelia
+# redis:
+#   host: 192.168.2.100
+#   port: 6379
+#   # This secret can also be set using the env variables AUTHELIA_SESSION_REDIS_PASSWORD_FILE
+#   password: l[7Vd6=.g}HG@JyHi\33.GH@xX?|r(O
 
 regulation:
   max_retries: 3
@@ -91,4 +142,11 @@ notifier:
   #   sender: 2fa@apex-migrations.net
   filesystem:
     filename: /config/notification.txt
+
+# webauthn:
+#   disable: false
+#   display_name: Authelia
+#   attestation_conveyance_preference: direct
+#   user_verification: preferred
+#   timeout: 60s
 ...
