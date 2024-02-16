@@ -36,10 +36,8 @@ access_control:
     - '172.17.0.0/16'
   - name: external
     networks:
-    - '143.178.33.85/16'
-    - '84.87.253.68/16'
-    - '84.241.199.78/16'
-    - '188.207.115.207/16'
+    - '143.178.33.85' # Werk IP
+    - '84.87.253.68' # Thuis IP
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
@@ -48,14 +46,9 @@ access_control:
       - 'external'
     - domain: home-assistant.apex-migrations.net
       policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-    - domain: traefik-azure.apex-migrations.net # Traefik dashboard in Azure
-      policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
+      # networks:
+      # - 'internal'
+      # - 'external'
     - domain: pihole.apex-migrations.net
       policy: one_factor
       networks:
@@ -76,7 +69,6 @@ access_control:
       networks:
       - 'internal'
       - 'external'
-    - domain: matomo.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
@@ -88,9 +80,6 @@ access_control:
       - 'external'
     - domain: dashboard.apex-migrations.net
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
     - domain: grafana.apex-migrations.net
       policy: one_factor
       networks:
