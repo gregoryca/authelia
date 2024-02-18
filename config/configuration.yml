@@ -28,68 +28,76 @@ authentication_backend:
     path: /config/users_database.yml
 
 access_control:
-  default_policy: deny
+  default_policy: one_factor
   networks:
   - name: internal
     networks:
     - '192.168.2.100/16'
     - '172.17.0.0/16'
+
   - name: external
     networks:
     - '143.178.33.85' # Werk IP
     - '84.87.253.68' # Thuis IP
+
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: home-assistant.apex-migrations.net
       policy: bypass
-      # networks:
-      # - 'internal'
-      # - 'external'
+      networks:
+      - 'internal'
+      - 'external'
+
     - domain: pihole.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: portainer.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: guacamole.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: uptime.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
-      policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
+
     - domain: phpmyadmin.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: dashboard.apex-migrations.net
       policy: one_factor
+
     - domain: grafana.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: nextclouddb.gui.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
+
     - domain: router.apex-migrations.net
       policy: one_factor
       networks:
