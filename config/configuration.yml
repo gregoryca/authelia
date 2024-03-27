@@ -28,7 +28,7 @@ authentication_backend:
     path: /config/users_database.yml
 
 access_control:
-  default_policy: one_factor
+  default_policy: deny
   networks:
   - name: internal
     networks:
