@@ -37,7 +37,7 @@ access_control:
 
   - name: external
     networks:
-    - '143.178.33.85' # Werk IP
+    - '188.89.186.162' # Werk IP
     - '84.87.253.68' # Thuis IP
 
   rules:
