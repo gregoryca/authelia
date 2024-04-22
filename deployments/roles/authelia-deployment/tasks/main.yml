@@ -19,31 +19,31 @@
     state: directory
     mode: '0777'
 
-- name: copy git repo to remote server user {{ server17a_user }}
+- name: copy git repo to remote server user {{ ansible_user }}
   copy:
     src: ~/temp/authelia
-    dest: /home/{{ server17a_user }}/srv/
+    dest: /home/{{ ansible_user }}/srv/
     remote_src: yes
 
-- name: copy git repo to remote server user {{ vps_user }}
-  copy:
-    src: ~/temp/authelia
-    dest: /home/{{ vps_user }}/srv/
-    remote_src: yes
+# - name: copy git repo to remote server user {{ vps_user }}
+#   copy:
+#     src: ~/temp/authelia
+#     dest: /home/{{ vps_user }}/srv/
+#     remote_src: yes
 
-- name: deploy Docker Compose stack on remote server {{ server17a }}
+- name: deploy Docker Compose stack on remote server {{ ansible_host }}
   docker_compose:
-    project_src: /home/{{ server17a_user }}/srv/authelia/
+    project_src: /home/{{ ansible_user }}/srv/authelia/
     build: no
     restarted: yes
     register: output
 
-- name: deploy Docker Compose stack on remote server {{ vps }}
-  docker_compose:
-    project_src: /home/{{ vps_user }}/srv/authelia/
-    build: no
-    restarted: yes
-    register: output
+# - name: deploy Docker Compose stack on remote server {{ vps }}
+#   docker_compose:
+#     project_src: /home/{{ vps_user }}/srv/authelia/
+#     build: no
+#     restarted: yes
+#     register: output
 
 - name: Delete content & directory
   file:
