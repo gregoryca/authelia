@@ -11,7 +11,7 @@
     repo: 'git@github.com:gregoryca/authelia.git'
     dest: ~/temp/authelia/
     accept_hostkey: yes
-    key_file: ${{ secrets.GH_SSH_KEY }}
+    key_file: "${{ secrets.GH_SSH_KEY }}"
 
 - name: Create the srv directory if it does not exist
   ansible.builtin.file:
