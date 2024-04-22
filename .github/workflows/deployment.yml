@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  GH_SSH_KEY: "${{ GH_SSH_KEY }}"
+  GITHUB_TOKEN: "${{ GH_SSH_KEY }}"
 
 jobs:
   build:
