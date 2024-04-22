@@ -23,12 +23,6 @@ jobs:
           directory: ./deployments/roles/authelia-deployment/
           key: ${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}
           inventory: |
-            [all:vars]
-            server17a_user=${{ secrets.USER }}
-            vps_user=${{ secrets.VPS_USER }}
-            server17a=${{ secrets.HOST }}
-            vps=${{ secrets.VPS_HOST }}
-
             [all]
-            server17a ansible_host={{ server17a }} ansible_port=${{ secrets.PORT }} ansible_user={{ server17a_user }}
-            vps ansible_host={{ vps }} ansible_user={{ vps_user }}
+            server17a ansible_host=${{ secrets.HOST }} ansible_port=${{ secrets.PORT }} ansible_user=${{ secrets.USER }}
+            vps ansible_host=${{ secrets.VPS_HOST }} ansible_user=${{ secrets.VPS_USER }}
