@@ -24,5 +24,7 @@ jobs:
           key: ${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}
           inventory: |
             [all]
-            server17a ansible_host=${{ secrets.HOST }} ansible_port=${{ secrets.PORT }} ansible_user=${{ secrets.USER }} GH_SSH_KEY=${{ secrets.GH_SSH_KEY }}
-            vps ansible_host=${{ secrets.VPS_HOST }} ansible_user=${{ secrets.VPS_USER }} GH_SSH_KEY=${{ secrets.GH_SSH_KEY }}
+            server17a ansible_host=${{ secrets.HOST }} ansible_port=${{ secrets.PORT }} ansible_user=${{ secrets.USER }}
+            vps ansible_host=${{ secrets.VPS_HOST }} ansible_user=${{ secrets.VPS_USER }}
+            [all:vars]
+            GH_SSH_KEY=${{ secrets.GH_SSH_KEY }}
