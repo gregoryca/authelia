@@ -16,8 +16,11 @@ jobs:
     steps:
       - name: Run playbook
         uses: actions/checkout@v3
+
       - uses: dawidd6/action-ansible-playbook@v2
         name: Deploy Authelia 2FA
+        env:
+          GH_SSH_KEY: ${{ GH_SSH_KEY }}
         with:
           playbook: main.yml
           directory: ./deployments/
