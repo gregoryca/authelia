@@ -1,0 +1,47 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+
+  #########################################
+  # Creating a temp directory on the host #
+  #########################################
+  - name: Create a temp directory if it does not exist
+    ansible.builtin.file:
+      path: ~/temp/authelia/
+      state: directory
+      mode: '0777'
+
+  - name: Checkout the Authelia git repo
+    ansible.builtin.git:
+      repo: 'git@github.com:gregoryca/authelia.git'
+      dest: ~/temp/authelia/
+      accept_hostkey: yes
+      key_file: ${{ secrets.GH_SSH_KEY }}
+
+  - name: Create the srv directory if it does not exist
+    ansible.builtin.file:
+      path: ~/srv/
+      state: directory
+      mode: '0777'
+
+  - name: copy git repo to remote server
+    copy:
+      src: ~/temp/authelia
+      dest: ~/srv/
+      remote_src: yes
+
+  - name: deploy Docker Compose stack on remote server
+    docker_compose:
+      project_src: ~/srv/authelia/
+      files:
+      - docker-compose.yml
+      recreate: always
+
+  - name: Delete content & directory
+    file:
+      state: absent
+      path: ~/temp/
+
+  - debug:
+      var: ansible_facts["cmdline"]
