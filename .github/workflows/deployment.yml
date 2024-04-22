@@ -9,9 +9,6 @@ on:
   #################################################################
   workflow_dispatch:
 
-env:
-  GITHUB_TOKEN: "${{ GH_SSH_KEY }}"
-
 jobs:
   build:
     runs-on: ubuntu-latest

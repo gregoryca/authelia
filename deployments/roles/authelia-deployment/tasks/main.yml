@@ -8,10 +8,8 @@
 
 - name: Checkout the Authelia git repo
   ansible.builtin.git:
-    repo: 'git@github.com:gregoryca/authelia.git'
+    repo: 'https://github.com/gregoryca/authelia.git'
     dest: ~/temp/authelia/
-    accept_hostkey: yes
-    key_file: "$GITHUB_TOKEN "
 
 - name: Create the srv directory if it does not exist
   ansible.builtin.file:
