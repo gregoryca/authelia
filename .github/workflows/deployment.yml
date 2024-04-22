@@ -19,7 +19,7 @@ jobs:
       - uses: dawidd6/action-ansible-playbook@v2
         name: Deploy Authelia 2FA
         with:
-          playbook: /deployment.yml
+          playbook: deployment.yml
           directory: ./deployments/roles/authelia-deployment/
           key: ${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}
           inventory: |
