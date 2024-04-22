@@ -19,8 +19,6 @@ jobs:
 
       - uses: dawidd6/action-ansible-playbook@v2
         name: Deploy Authelia 2FA
-        env:
-          GH_SSH_KEY: ${{ GH_SSH_KEY }}
         with:
           playbook: main.yml
           directory: ./deployments/
@@ -29,3 +27,5 @@ jobs:
             [all]
             server17a ansible_host=${{ secrets.HOST }} ansible_port=${{ secrets.PORT }} ansible_user=${{ secrets.USER }}
             vps ansible_host=${{ secrets.VPS_HOST }} ansible_user=${{ secrets.VPS_USER }}
+        env:
+          GH_SSH_KEY: ${{ GH_SSH_KEY }}
