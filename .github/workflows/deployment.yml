@@ -20,7 +20,7 @@ jobs:
         name: Deploy Authelia 2FA
         with:
           playbook: /deployment.yml
-          directory: ./deployments/roles/authelia-deployment
+          directory: ./deployments/roles/authelia-deployment/
           key: ${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}
           inventory: |
             [all:vars]
