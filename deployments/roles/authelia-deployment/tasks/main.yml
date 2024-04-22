@@ -11,7 +11,7 @@
     repo: 'git@github.com:gregoryca/authelia.git'
     dest: ~/temp/authelia/
     accept_hostkey: yes
-    key_file: {{ GH_SSH_KEY }}
+    key_file: "{{ GH_SSH_KEY }}"
 
 - name: Create the srv directory if it does not exist
   ansible.builtin.file:
@@ -19,10 +19,10 @@
     state: directory
     mode: '0777'
 
-- name: copy git repo to remote server user {{ ansible_user }}
+- name: copy git repo to remote server user "{{ ansible_user }}"
   copy:
     src: ~/temp/authelia
-    dest: /home/{{ ansible_user }}/srv/
+    dest: /home/"{{ ansible_user }}"/srv/
     remote_src: yes
 
 # - name: copy git repo to remote server user {{ vps_user }}
@@ -33,7 +33,7 @@
 
 - name: deploy Docker Compose stack on remote server {{ ansible_host }}
   docker_compose:
-    project_src: /home/{{ ansible_user }}/srv/authelia/
+    project_src: /home/"{{ ansible_user }}"/srv/authelia/
     build: no
     restarted: yes
     register: output
