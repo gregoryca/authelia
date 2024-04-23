@@ -2,33 +2,38 @@
 # tasks file for authelia-deployment
 - name: Create a temp directory if it does not exist
   ansible.builtin.file:
-    path: ~/temp/authelia/
+    path: /home/{{ ansible_ssh_user }}/temp/authelia
     state: directory
     mode: '0777'
 
 - name: Checkout the Authelia git repo
   ansible.builtin.git:
     repo: 'https://github.com/gregoryca/authelia.git'
-    dest: ~/temp/authelia/
+    dest: /home/{{ ansible_ssh_user }}/temp/authelia
+
+- name: Stop the docker container
+  docker_container:
+    name: authelia
+    image: authelia/authelia:latest
+    state: stopped
 
 - name: Create the srv directory if it does not exist
   ansible.builtin.file:
-    path: ~/srv/
+    path: /home/{{ ansible_ssh_user }}/srv/
     state: directory
     mode: '0777'
 
-- name: copy git repo to remote server user "{{ ansible_user }}"
+- name: copy git repo to remote server user "{{ ansible_ssh_user }}"
   copy:
-    src: ~/temp/authelia
-    dest: /home/"{{ ansible_user }}"/srv/
+    src: /home/{{ ansible_ssh_user }}/temp/authelia
+    dest: /home/{{ ansible_ssh_user }}/srv/
     remote_src: yes
 
-- name: deploy Docker Compose stack on remote server {{ ansible_host }}
-  docker_compose:
-    project_src: /home/"{{ ansible_user }}"/srv/authelia/
-    build: no
-    restarted: yes
-  register: output
+- name: Stop the docker container
+  docker_container:
+    name: authelia
+    image: authelia/authelia:latest
+    state: started
 
 - name: Delete content & directory
   file:
