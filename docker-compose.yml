@@ -1,5 +1,3 @@
-version: '3.3'
-
 services:
   authelia:
     image: authelia/authelia:latest
@@ -12,6 +10,11 @@ services:
       - 9091:9091
     labels:
       - 'traefik.enable=true'
+
+      - 'traefik.http.routers.authelia-secure.rule=Host(`auth.apex-migrations.net`)'
+      - 'traefik.http.routers.authelia-secure.entrypoints=web-secure'
+      - 'traefik.http.routers.authelia-secure.tls=true'
+      - 'traefik.http.routers.authelia-secure.tls.certresolver=production'
 
       - 'traefik.http.middlewares.authelia-secure.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net' # yamllint disable-line rule:line-length
       - 'traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader=true'
