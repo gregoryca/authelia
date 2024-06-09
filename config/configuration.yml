@@ -62,11 +62,8 @@ access_control:
       - 'internal'
       - 'external'
 
-    - domain: guacamole.apex-migrations.net
+    - domain: pve.apex-migrations.net
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
 
     - domain: uptime.apex-migrations.net
       policy: one_factor
