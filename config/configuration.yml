@@ -37,8 +37,8 @@ access_control:
 
   - name: external
     networks:
-    - '143.179.220.82' # Werk IP
     - '84.87.253.68' # Thuis IP
+    - '85.148.228.254' #Sulli IP
 
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
