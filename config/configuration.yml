@@ -59,9 +59,6 @@ access_control:
 
     - domain: portainer.apex-migrations.net
       policy: one_factor
-      networks:
-#      - 'internal'
-#      - 'external'
 
     - domain: pve.apex-migrations.net
       policy: one_factor
@@ -76,22 +73,17 @@ access_control:
       policy: one_factor
       networks:
       - 'internal'
-      - 'external'
 
     - domain: dashboard.apex-migrations.net
       policy: one_factor
 
     - domain: grafana.apex-migrations.net
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
 
     - domain: nextclouddb.gui.apex-migrations.net
       policy: one_factor
       networks:
       - 'internal'
-      - 'external'
 
     - domain: router.apex-migrations.net
       policy: one_factor
@@ -101,16 +93,7 @@ access_control:
 
     - domain: firefox.apex-migrations.net
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
       
-    - domain: ranchers.apex-migrations.net
-      policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
-
 session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
