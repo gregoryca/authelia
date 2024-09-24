@@ -44,9 +44,9 @@ access_control:
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
+      # networks:
+      # - 'internal'
+      # - 'external'
 
     - domain: pihole.apex-migrations.net
       policy: one_factor
