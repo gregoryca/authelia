@@ -57,6 +57,9 @@ access_control:
     - domain: proxmox.apex-migrations.net
       policy: one_factor
 
+    - domain: wireguard.apex-migrations.net
+      policy: one_factor
+
     - domain: portainer.apex-migrations.net
       policy: one_factor
 
