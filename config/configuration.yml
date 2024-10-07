@@ -96,9 +96,6 @@ access_control:
 
     - domain: firefox.apex-migrations.net
       policy: one_factor
-      
-    - domain: headscale-ui.apex-migrations.net
-      policy: one_factor
 
 session:
   name: authelia_session
