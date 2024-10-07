@@ -97,6 +97,9 @@ access_control:
     - domain: firefox.apex-migrations.net
       policy: one_factor
 
+    - domain: headscale.apex-migrations.net
+      policy: one_factor
+
 session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
