@@ -32,27 +32,21 @@ access_control:
   networks:
   - name: internal
     networks:
-    - '192.168.2.100/16'
+    - '192.168.2.100/24'
     - '172.17.0.0/16'
 
   - name: external
     networks:
     - '84.87.253.68' # Thuis IP
-    - '85.148.228.254' # Sulli IP
+    - '85.10.132.208' # VPS IP
     - '217.68.56.193' # Gem Den Haag IP
 
   rules:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
-      # networks:
-      # - 'internal'
-      # - 'external'
 
     - domain: pihole.apex-migrations.net
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
 
     - domain: proxmox.apex-migrations.net
       policy: one_factor
@@ -96,6 +90,11 @@ access_control:
 
     - domain: firefox.apex-migrations.net
       policy: one_factor
+
+    - domain: localai.apex-migrations.net
+      policy: bypass
+      networks:
+      - 'external'
 
 session:
   name: authelia_session
