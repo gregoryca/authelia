@@ -59,6 +59,9 @@ access_control:
 
     - domain: pve.apex-migrations.net
       policy: one_factor
+      networks:
+        - 'internal'
+        - 'external'
 
     - domain: uptime.apex-migrations.net
       policy: one_factor
@@ -91,10 +94,10 @@ access_control:
     - domain: firefox.apex-migrations.net
       policy: one_factor
 
-    - domain: localai.apex-migrations.net
-      policy: bypass
-      networks:
-      - 'external'
+    # - domain: localai.apex-migrations.net
+    #   policy: bypass
+    #   networks:
+    #   - 'external'
 
 session:
   name: authelia_session
