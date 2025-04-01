@@ -94,10 +94,8 @@ access_control:
     - domain: firefox.apex-migrations.net
       policy: one_factor
 
-    # - domain: localai.apex-migrations.net
-    #   policy: bypass
-    #   networks:
-    #   - 'external'
+    - domain: frigate.apex-migrations.net
+      policy: one_factor
 
 session:
   name: authelia_session
