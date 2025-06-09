@@ -32,8 +32,10 @@ access_control:
   networks:
   - name: internal
     networks:
-    - '192.168.2.100/24'
+    - '192.168.2.0/24'
     - '172.17.0.0/16'
+    - '172.18.0.0/16'
+    - '100.64.0.0/24'
 
   - name: external
     networks:
@@ -45,39 +47,33 @@ access_control:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
 
-    - domain: pihole.apex-migrations.net
+    - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
       policy: one_factor
 
-    - domain: proxmox.apex-migrations.net
+    - domain: proxmox.apex-migrations.net # Proxmox Server
       policy: one_factor
 
-    - domain: wireguard.apex-migrations.net
+    - domain: wireguard.apex-migrations.net # VPN
       policy: one_factor
 
-    - domain: portainer.apex-migrations.net
+    - domain: portainer.apex-migrations.net # Docker UI
       policy: one_factor
 
-    - domain: pve.apex-migrations.net
-      policy: one_factor
-      networks:
-        - 'internal'
-        - 'external'
-
-    - domain: uptime.apex-migrations.net
+    - domain: uptime.apex-migrations.net # Uptime service tracker
       policy: one_factor
       networks:
       - 'internal'
       - 'external'
 
-    - domain: phpmyadmin.apex-migrations.net
+    - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
       policy: one_factor
       networks:
       - 'internal'
 
-    - domain: dashboard.apex-migrations.net
+    - domain: dashboard.apex-migrations.net # Personal dashboard
       policy: one_factor
 
-    - domain: grafana.apex-migrations.net
+    - domain: grafana.apex-migrations.net # Infrastructure Dashboards
       policy: one_factor
 
     - domain: nextclouddb.gui.apex-migrations.net
@@ -85,7 +81,7 @@ access_control:
       networks:
       - 'internal'
 
-    - domain: router.apex-migrations.net
+    - domain: router.apex-migrations.net # Home router UI
       policy: one_factor
       networks:
       - 'internal'
@@ -94,7 +90,7 @@ access_control:
     - domain: firefox.apex-migrations.net
       policy: one_factor
 
-    - domain: frigate.apex-migrations.net
+    - domain: frigate.apex-migrations.net # NVR with AI detection capabilities
       policy: one_factor
 
 session:
