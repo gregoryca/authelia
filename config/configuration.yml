@@ -41,57 +41,88 @@ access_control:
     networks:
     - '84.87.253.68' # Thuis IP
     - '85.10.132.208' # VPS IP
-    - '217.68.56.193' # Gem Den Haag IP
+    - '217.68.56.201' # Gem Den Haag IP
 
   rules:
-    - domain: traefik.apex-migrations.net # Traefik dashboard at home
+    - domain: dashboard.apex-migrations.net # Personal dashboard
+      policy: bypass    
+      networks:
+      - 'internal'
+      - 'external'
+    - domain: dashboard.apex-migrations.net # Personal dashboard
       policy: one_factor
+
+    - domain: traefik.apex-migrations.net # Traefik dashboard at home
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
-      policy: one_factor
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: proxmox.apex-migrations.net # Proxmox Server
-      policy: one_factor
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: wireguard.apex-migrations.net # VPN
-      policy: one_factor
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: portainer.apex-migrations.net # Docker UI
-      policy: one_factor
-
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
+      
     - domain: uptime.apex-migrations.net # Uptime service tracker
-      policy: one_factor
+      policy: bypass      
       networks:
       - 'internal'
       - 'external'
 
     - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
-      policy: one_factor
+      policy: bypass      
       networks:
       - 'internal'
-
-    - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: one_factor
+      - 'external'
 
     - domain: grafana.apex-migrations.net # Infrastructure Dashboards
-      policy: one_factor
-
-    - domain: nextclouddb.gui.apex-migrations.net
-      policy: one_factor
+      policy: bypass      
       networks:
       - 'internal'
+      - 'external'
+
+    - domain: nextclouddb.gui.apex-migrations.net
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: router.apex-migrations.net # Home router UI
-      policy: one_factor
+      policy: bypass      
       networks:
       - 'internal'
       - 'external'
 
     - domain: firefox.apex-migrations.net
-      policy: one_factor
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
     - domain: frigate.apex-migrations.net # NVR with AI detection capabilities
-      policy: one_factor
+      policy: bypass      
+      networks:
+      - 'internal'
+      - 'external'
 
 session:
   name: authelia_session
