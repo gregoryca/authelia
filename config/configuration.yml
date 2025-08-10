@@ -45,33 +45,25 @@ access_control:
 
   rules:
     - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: bypass    
+      policy: one_factor    
       networks:
       - 'internal'
       - 'external'
-    - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: one_factor
 
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
-      policy: bypass      
+      policy: one_factor
       networks:
       - 'internal'
       - 'external'
 
     - domain: proxmox.apex-migrations.net # Proxmox Server
-      policy: bypass      
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: wireguard.apex-migrations.net # VPN
-      policy: bypass      
+      policy: one_factor
       networks:
       - 'internal'
       - 'external'
@@ -81,6 +73,9 @@ access_control:
       networks:
       - 'internal'
       - 'external'
+
+    - domain: portainer.apex-migrations.net # Docker UI
+      policy: one_factor
       
     - domain: uptime.apex-migrations.net # Uptime service tracker
       policy: bypass      
@@ -89,37 +84,37 @@ access_control:
       - 'external'
 
     - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: grafana.apex-migrations.net # Infrastructure Dashboards
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: nextclouddb.gui.apex-migrations.net
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: router.apex-migrations.net # Home router UI
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: firefox.apex-migrations.net
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
 
     - domain: frigate.apex-migrations.net # NVR with AI detection capabilities
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
