@@ -46,12 +46,9 @@ access_control:
   rules:
     - domain: dashboard.apex-migrations.net # Personal dashboard
       policy: one_factor    
-      networks:
-      - 'internal'
-      - 'external'
 
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
-      policy: one_factor      
+      policy: one_factor     
       networks:
       - 'internal'
       - 'external'
@@ -62,14 +59,23 @@ access_control:
       - 'internal'
       - 'external'
 
+    - domain: ai.apex-migrations.net # Pihole DNS/DHCP
+      policy: bypass
+      networks:
+      - 'internal'
+      - 'external'
+
     - domain: proxmox.apex-migrations.net # Proxmox Server
       policy: one_factor
+      # resources:
+      #     - '^/api([/2].*)?$'
+      #     - '^/#v1([:8].*)?$'
       networks:
       - 'internal'
       - 'external'
 
     - domain: portainer.apex-migrations.net # Docker UI
-      policy: bypass      
+      policy: one_factor      
       networks:
       - 'internal'
       - 'external'
@@ -78,7 +84,7 @@ access_control:
       policy: one_factor
       
     - domain: uptime.apex-migrations.net # Uptime service tracker
-      policy: bypass      
+      policy: one_factor
       networks:
       - 'internal'
       - 'external'
@@ -114,6 +120,12 @@ access_control:
       - 'external'
 
     - domain: frigate.apex-migrations.net # NVR with AI detection capabilities
+      policy: one_factor      
+      networks:
+      - 'internal'
+      - 'external'
+
+    - domain: headscale.apex-migrations.net # NVR with AI detection capabilities
       policy: one_factor      
       networks:
       - 'internal'
