@@ -20,6 +20,8 @@ services:
       - 'traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader=true'
       - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email' # yamllint disable-line rule:line-length
 
+      - "traefik.http.routers.authelia-secure.middlewares=fail2ban@file"
+      
     restart: unless-stopped
     healthcheck:
       disable: true
