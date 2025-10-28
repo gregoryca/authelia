@@ -45,16 +45,18 @@ access_control:
 
   rules:
     - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: one_factor    
-
+      policy: bypass    
+      networks:
+      - 'internal'
+      - 'external'
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
-      policy: one_factor     
+      policy: bypass     
       networks:
       - 'internal'
       - 'external'
 
     - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
-      policy: one_factor
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
@@ -75,40 +77,37 @@ access_control:
       - 'external'
 
     - domain: portainer.apex-migrations.net # Docker UI
-      policy: one_factor      
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
-
-    - domain: portainer.apex-migrations.net # Docker UI
-      policy: one_factor
       
     - domain: uptime.apex-migrations.net # Uptime service tracker
-      policy: one_factor
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
 
     - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
-      policy: one_factor      
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
 
     - domain: grafana.apex-migrations.net # Infrastructure Dashboards
-      policy: one_factor      
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
 
     - domain: nextclouddb.gui.apex-migrations.net
-      policy: one_factor      
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
 
     - domain: router.apex-migrations.net # Home router UI
-      policy: one_factor      
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
@@ -125,11 +124,11 @@ access_control:
       - 'internal'
       - 'external'
 
-    - domain: headscale.apex-migrations.net # NVR with AI detection capabilities
-      policy: one_factor      
-      networks:
-      - 'internal'
-      - 'external'
+    # - domain: headscale.apex-migrations.net # NVR with AI detection capabilities
+    #   policy: bypass
+    #   networks:
+    #   - 'internal'
+    #   - 'external'
 
 session:
   name: authelia_session
