@@ -49,6 +49,7 @@ access_control:
       networks:
       - 'internal'
       - 'external'
+
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: bypass     
       networks:
@@ -61,17 +62,14 @@ access_control:
       - 'internal'
       - 'external'
 
-    - domain: ai.apex-migrations.net # Pihole DNS/DHCP
-      policy: bypass
+    - domain: proxmox.apex-migrations.net # Proxmox Server
+      policy: one_factor
       networks:
       - 'internal'
       - 'external'
 
-    - domain: proxmox.apex-migrations.net # Proxmox Server
+    - domain: proxmox-02.apex-migrations.net # Proxmox Server
       policy: one_factor
-      # resources:
-      #     - '^/api([/2].*)?$'
-      #     - '^/#v1([:8].*)?$'
       networks:
       - 'internal'
       - 'external'
@@ -107,22 +105,7 @@ access_control:
       - 'external'
 
     - domain: router.apex-migrations.net # Home router UI
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: firefox.apex-migrations.net
-      policy: one_factor      
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: frigate.apex-migrations.net # NVR with AI detection capabilities
-      policy: one_factor      
-      networks:
-      - 'internal'
-      - 'external'
+      policy: one_factor
 
     # - domain: headscale.apex-migrations.net # NVR with AI detection capabilities
     #   policy: bypass
