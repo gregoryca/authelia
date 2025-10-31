@@ -45,13 +45,10 @@ access_control:
 
   rules:
     - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: bypass    
-      networks:
-      - 'internal'
-      - 'external'
+      policy: one_factor
 
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
-      policy: bypass     
+      policy: bypass
       networks:
       - 'internal'
       - 'external'
@@ -79,7 +76,7 @@ access_control:
       networks:
       - 'internal'
       - 'external'
-      
+
     - domain: uptime.apex-migrations.net # Uptime service tracker
       policy: bypass
       networks:
