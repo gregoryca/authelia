@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.34.0 (cbf2835db)
+    traefik.enable: "true"
+    traefik.http.middlewares.authelia-secure.forwardauth.address: http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net
+    traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders: Remote-User,Remote-Groups,Remote-Name,Remote-Email
+    traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader: "true"
+    traefik.http.routers.authelia-secure.entrypoints: web-secure
+    traefik.http.routers.authelia-secure.middlewares: fail2ban@file
+    traefik.http.routers.authelia-secure.rule: Host(`auth.apex-migrations.net`)
+    traefik.http.routers.authelia-secure.tls: "true"
+    traefik.http.routers.authelia-secure.tls.certresolver: production
+  labels:
+    io.kompose.service: authelia
+  name: authelia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: authelia
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.34.0 (cbf2835db)
+        traefik.enable: "true"
+        traefik.http.middlewares.authelia-secure.forwardauth.address: http://authelia:9091/api/verify?rd=https://auth.apex-migrations.net
+        traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders: Remote-User,Remote-Groups,Remote-Name,Remote-Email
+        traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader: "true"
+        traefik.http.routers.authelia-secure.entrypoints: web-secure
+        traefik.http.routers.authelia-secure.middlewares: fail2ban@file
+        traefik.http.routers.authelia-secure.rule: Host(`auth.apex-migrations.net`)
+        traefik.http.routers.authelia-secure.tls: "true"
+        traefik.http.routers.authelia-secure.tls.certresolver: production
+      labels:
+        io.kompose.service: authelia
+    spec:
+      containers:
+        - env:
+            - name: TZ
+              value: Europe/Amsterdam
+          image: authelia/authelia:latest
+          name: authelia
+          ports:
+            - containerPort: 9091
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: authelia-cm0
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            name: authelia-cm0
+          name: authelia-cm0
