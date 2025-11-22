@@ -33,6 +33,7 @@ access_control:
   - name: internal
     networks:
     - '192.168.2.0/24'
+    - '192.168.1.0/24''
     - '172.17.0.0/16'
     - '172.18.0.0/16'
     - '100.64.0.0/24'
@@ -53,6 +54,12 @@ access_control:
       - 'internal'
       - 'external'
 
+    # - domain: adguard.apex-migrations.net # Adguard dashboard at home
+    #   policy: bypass
+    #   networks:
+    #   - 'internal'
+    #   - 'external'
+
     - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
       policy: bypass
       networks:
@@ -66,6 +73,12 @@ access_control:
       - 'external'
 
     - domain: proxmox-02.apex-migrations.net # Proxmox Server
+      policy: one_factor
+      networks:
+      - 'internal'
+      - 'external'
+
+    - domain: proxmox-03.apex-migrations.net # Proxmox Server
       policy: one_factor
       networks:
       - 'internal'
