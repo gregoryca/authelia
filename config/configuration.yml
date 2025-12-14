@@ -3,167 +3,78 @@
 #                   Authelia configuration                    #
 ###############################################################
 
-jwt_secret: SEEEEH_BO_sa_kaba-bai_den_konyo-bo_mamaaaaa
-default_redirection_url: https://dashboard.apex-migrations.net/autologin/d6f24801-dbe0-4497-a2d5-9ad4050de0fd #https://auth.apex-migrations.net
-
 server:
-  host: 0.0.0.0
-  port: 9091
+  address: 'tcp://:9091'
 
 log:
-  level: debug
-# This secret can also be set using the env variables AUTHELIA_JWT_SECRET_FILE
+  level: 'debug'
 
 totp:
-  issuer: authelia.com
+  issuer: 'authelia.com'
 
-# duo_api:
-#  hostname: api-123456789.example.com
-#  integration_key: ABCDEF
-#  # This secret can also be set using the env variables AUTHELIA_DUO_API_SECRET_KEY_FILE
-#  secret_key: 1234567890abcdefghifjkl
+identity_validation:
+  reset_password:
+    jwt_secret: 'fZeFjugqnaemIvdMAkytTfosBCM0MKh7X2lDj2SzR4FX7TUOunIWtob44yKa8VKm'
 
 authentication_backend:
   file:
-    path: /config/users_database.yml
+    path: '/config/users_database.yml'
 
 access_control:
-  default_policy: deny
-  networks:
-  - name: internal
-    networks:
-    - '192.168.2.0/24'
-    - '192.168.1.0/24''
-    - '172.17.0.0/16'
-    - '172.18.0.0/16'
-    - '100.64.0.0/24'
-
-  - name: external
-    networks:
-    - '84.87.253.68' # Thuis IP
-    - '85.10.132.208' # VPS IP
-    - '217.68.56.201' # Gem Den Haag IP
-
+  default_policy: 'one_factor'
   rules:
-    - domain: dashboard.apex-migrations.net # Personal dashboard
-      policy: one_factor
+    # - domain: dashboard.apex-migrations.net # Personal dashboard
+    #   policy: one_factor
 
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    # - domain: adguard.apex-migrations.net # Adguard dashboard at home
-    #   policy: bypass
-    #   networks:
-    #   - 'internal'
-    #   - 'external'
-
-    - domain: pihole.apex-migrations.net # Pihole DNS/DHCP
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: proxmox.apex-migrations.net # Proxmox Server
       policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
 
-    - domain: proxmox-02.apex-migrations.net # Proxmox Server
-      policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
+    # - domain: proxmox.apex-migrations.net # Proxmox Server
+    #   policy: one_factor
 
-    - domain: proxmox-03.apex-migrations.net # Proxmox Server
-      policy: one_factor
-      networks:
-      - 'internal'
-      - 'external'
+    # - domain: proxmox-02.apex-migrations.net # Proxmox Server
+    #   policy: one_factor
 
-    - domain: portainer.apex-migrations.net # Docker UI
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
+    # - domain: proxmox-03.apex-migrations.net # Proxmox Server
+    #   policy: one_factor
 
     - domain: uptime.apex-migrations.net # Uptime service tracker
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: grafana.apex-migrations.net # Infrastructure Dashboards
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: nextclouddb.gui.apex-migrations.net
-      policy: bypass
-      networks:
-      - 'internal'
-      - 'external'
-
-    - domain: router.apex-migrations.net # Home router UI
       policy: one_factor
 
-    # - domain: headscale.apex-migrations.net # NVR with AI detection capabilities
-    #   policy: bypass
-    #   networks:
-    #   - 'internal'
-    #   - 'external'
+    - domain: phpmyadmin.apex-migrations.net # PHP my admin panel
+      policy: one_factor
+
+    - domain: nextclouddb.gui.apex-migrations.net
+      policy: one_factor
 
 session:
-  name: authelia_session
-  # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
-  secret: unsecure_session_secret
-  expiration: 1h  # 1 hour
-  same_site : lax
-  inactivity: 30m  # 30 minutes. 5 minutes = 300
-  remember_me_duration:  1w #1 week see: https://www.authelia.com/configuration/prologue/common/#duration-notation-format for notation
-  domain: apex-migrations.net  # Should match whatever your root protected domain is
-
-# redis:
-#   host: 192.168.2.100
-#   port: 6379
-#   # This secret can also be set using the env variables AUTHELIA_SESSION_REDIS_PASSWORD_FILE
-#   password: l[7Vd6=.g}HG@JyHi\33.GH@xX?|r(O
+  secret: 'JtTZe3UDIAg5Hvy9XeXaXWbRYhfwEJmLbbwkofQfgGoKXBPx8RxCZXTF32GIxDPR'
+  cookies:
+    - name: 'authelia_session'
+      domain: 'apex-migrations.net'  # Should match whatever your root protected domain is
+      authelia_url: 'https://auth.apex-migrations.net'
+      expiration: '1 hour'  # 1 hour
+      inactivity: '15 minutes'  # 5 minutes
+      default_redirection_url: https://dashboard.apex-migrations.net/autologin/d6f24801-dbe0-4497-a2d5-9ad4050de0fd
 
 regulation:
   max_retries: 3
-  find_time: 120
-  ban_time: 300
+  find_time: '2 minutes'
+  ban_time: '5 minutes'
 
 storage:
-  encryption_key: you_must_generate_a_random_string_of_more_than_twenty_chars_and_configure_this
+  encryption_key: 'you_must_generate_a_random_string_of_more_than_twenty_chars_and_configure_this'
   local:
-    path: /config/db.sqlite3
+    path: '/config/db.sqlite3'
 
 notifier:
+  filesystem:
+    filename: '/config/notification.txt'
   # smtp:
   #   username: 2fa@apex-migrations.net
   #   # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
   #   password: Laliloe4life
-  #   host: smtp.transip.email
+  #   address: smtp.transip.email
   #   port: 465
   #   sender: 2fa@apex-migrations.net
-  filesystem:
-    filename: /config/notification.txt
-
-# webauthn:
-#   disable: false
-#   display_name: Authelia
-#   attestation_conveyance_preference: direct
-#   user_verification: preferred
-#   timeout: 60s
 ...

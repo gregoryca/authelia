@@ -3,7 +3,7 @@ services:
     image: authelia/authelia:latest
     container_name: authelia
     volumes:
-      - ./config:/config:rw
+      - ./config:/config
     networks:
       - web-secure
     ports:
@@ -20,7 +20,7 @@ services:
       - 'traefik.http.middlewares.authelia-secure.forwardauth.trustForwardHeader=true'
       - 'traefik.http.middlewares.authelia-secure.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email' # yamllint disable-line rule:line-length
 
-      - "traefik.http.routers.authelia-secure.middlewares=fail2ban@file"
+      # - "traefik.http.routers.authelia-secure.middlewares=fail2ban@file"
       
     restart: unless-stopped
     healthcheck:
