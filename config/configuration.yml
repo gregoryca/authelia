@@ -29,8 +29,8 @@ access_control:
     - domain: traefik.apex-migrations.net # Traefik dashboard at home
       policy: one_factor
 
-    # - domain: proxmox.apex-migrations.net # Proxmox Server
-    #   policy: one_factor
+    - domain: proxmox.apex-migrations.net # Proxmox Server
+      policy: one_factor
 
     # - domain: proxmox-02.apex-migrations.net # Proxmox Server
     #   policy: one_factor
