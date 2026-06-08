@@ -14,12 +14,4 @@ users:
     groups:
       - admins
       - dev
-
-  a-grcr:
-    displayname: "Gregory Craane | Referit"
-    password: "$argon2id$v=19$m=65536,t=3,p=4$nqnOBgrRRHtmEie0IyZUPQ$nQ1xHLQTdjgj3Vx9qyMjKTQwgvFGB/Nkdglx7qHzjGI"  # yamllint disable-line rule:line-length
-    email: gregory.craane@referit.nl
-    groups:
-      - admins
-      - dev
 ...
